@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - PiyushTherapy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+<header class="dashboard-header">
+  <div class="container dashboard-header-container">
+    <div class="logo">
+      <div class="logo-circle"></div>
+      <span>PiyushTherapy</span>
+    </div>
+    <button onclick="logoutUser()" class="logout-btn">Logout</button>
+  </div>
+</header>
+
+<section class="dashboard-hero">
+  <h1>Welcome, <span id="userEmail">User</span>!</h1>
+  <p>Your personalized E-Learning dashboard</p>
+</section>
+
+<section class="dashboard-cards">
+  <div class="cards-grid">
+
+    <div class="card">
+      <div class="icon">📚</div>
+      <h3>Notes</h3>
+      <p>Structured & exam-focused physiotherapy notes.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📖</div>
+      <h3>Books</h3>
+      <p>Recommended medical books & references.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">📝</div>
+      <h3>Quizzes</h3>
+      <p>Test your knowledge instantly.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🔬</div>
+      <h3>Research</h3>
+      <p>Latest journals & insights.</p>
+    </div>
+
+  </div>
+</section>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Show user email
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById("userEmail").innerText = user.email;
+  } else {
+    window.location.href = "login.html"; // redirect if not logged in
+  }
+});
+
+// Logout function
+window.logoutUser = function() {
+  signOut(auth).then(() => {
+    window.location.href = "index.html";
+  });
+}
+</script>
+
+</body>
+</html>

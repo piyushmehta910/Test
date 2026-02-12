@@ -1,0 +1,303 @@
+:root {
+  --bg: #000;
+  --card: #111;
+  --text: #fff;
+  --dim: rgba(255,255,255,0.7);
+  --border: #222;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+.container {
+  width: 92%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  background: #000;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* DESKTOP NAV */
+
+.desktop-nav {
+  display: flex;
+  gap: 30px;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+  color: var(--dim);
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.desktop-nav a:hover {
+  color: white;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn {
+  background: white;
+  color: black;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background: #ddd;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  padding: 100px 0 60px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 18px;
+  background: #111;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: var(--dim);
+  max-width: 600px;
+  margin: auto;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+/* ================= CARDS ================= */
+
+.cards {
+  padding: 60px 0 100px;
+}
+
+.cards-grid {
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  background: #161616;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: var(--dim);
+  font-size: 0.9rem;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+  text-align: center;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: var(--dim);
+  text-decoration: none;
+  margin: 0 8px;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* ================= MOBILE ================= */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: white;
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 260px;
+  height: 100vh;
+  background: #111;
+  padding: 90px 20px;
+  transition: 0.3s;
+  z-index: 1001;
+}
+
+.mobile-nav.active {
+  left: 0;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 15px 0;
+  color: white;
+  text-decoration: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  z-index: 1000;
+}
+
+.overlay.active {
+  display: block;
+}
+
+/* BREAKPOINT */
+
+@media (max-width: 900px) {
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .login-btn {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+
+}
+.auth-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+}
+
+.auth-container {
+  background: #111;
+  padding: 40px;
+  border-radius: 15px;
+  width: 320px;
+  text-align: center;
+  border: 1px solid #222;
+}
+
+.auth-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 8px;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.dashboard {
+  text-align: center;
+  padding: 100px 20px;
+}
